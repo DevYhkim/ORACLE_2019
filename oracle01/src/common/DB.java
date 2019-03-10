@@ -1,0 +1,36 @@
+package common;
+
+import java.sql.Connection;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class DB {
+	// getConn메서드는 오라클 Connection를 가져오기 위한것
+	public static Connection getConn() {
+		DataSource ds = null;
+		Connection conn = null;	// Connection > 특정 데이터베이스와의 연결을 나타내는 객체
+		
+		try {
+			// Context.xml 파일의 정보 분석. DB정보는 Server > Context에 선언함
+			Context context = new InitialContext();	// 이름으로 Context에서 찾는다.
+			// 여기가 java:comp/env/a면 Server > Context 리소스 이름도 a
+			ds=(DataSource)context.lookup("java:comp/env/jdbc/OracleDB");
+			/*
+			 DriverManager > JDBC 드라이버를 관리하기 위한 기본적인 클래스.
+			 데이터베이스 드라이버를 선택하고 새로운 데이터베이스 연결을 생성하는 기능.
+			 1) ORACLE 드라이버 - oracle.jdbc.driver.OracleDriver
+			    URL형식 - jdbc:oracle:thin:@서버주소:포트번호:SID
+			    
+			 2) MySQL드라이버 - com.mysql.jdbc.Driver, MariaDB - org.mariadb.jdbc.Driver
+			    URL형식 - jdbc:mysql://서버주소:포트번호/데이터베이스명
+			              jdbc:mariadb://서버주소:포트번호/데이터베이스명
+			 */
+			conn = ds.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
+}
