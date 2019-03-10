@@ -17,7 +17,7 @@ public class EmpDAO {
 		// select 목록 가져오기 위한 것
 		PreparedStatement pstmt = null;
 		
-		ResultSet rs = null;
+		ResultSet rs = null;	// 레코드를 담는 그릇. 커서가 존재해 while(rs.next)로 이동한다.
 		
 		try {
 			conn = DB2.getConn(); //  DB접속(DB클래스) context.xml maxTotal 50개중 한개가 넘어옴
