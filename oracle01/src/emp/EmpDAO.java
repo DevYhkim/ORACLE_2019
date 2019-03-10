@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import common.DB2;
+import common_Re.DB2;
 
 public class EmpDAO {
 	public ArrayList<EmpDTO> listEmp(){

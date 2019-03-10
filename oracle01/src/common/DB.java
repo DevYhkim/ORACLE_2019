@@ -14,6 +14,8 @@ public class DB {
 		
 		try {
 			// Context.xml 파일의 정보 분석. DB정보는 Server > Context에 선언함
+			// InitialContext는 웹어플리케이션이 처음으로 배치될 때 설정되고 모든 설정된 엔트리와
+			// 자원은 JNDI namespace의 java:comp/env 부분에 놓임.
 			Context context = new InitialContext();	// 이름으로 Context에서 찾는다.
 			// 여기가 java:comp/env/a면 Server > Context 리소스 이름도 a
 			ds=(DataSource)context.lookup("java:comp/env/jdbc/OracleDB");
@@ -28,6 +30,7 @@ public class DB {
 			              jdbc:mariadb://서버주소:포트번호/데이터베이스명
 			 */
 			conn = ds.getConnection();
+			// 이곳에선 conn을 close()  하면 안된다. 그럼 리턴이 안됨. 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
