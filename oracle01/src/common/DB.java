@@ -13,6 +13,23 @@ public class DB {
 		Connection conn = null;	// Connection > 특정 데이터베이스와의 연결을 나타내는 객체
 		
 		try {
+			
+			/* Context DB정보
+		     <Resource auth="Container" 
+	          name="jdbc/OracleDB" 
+	          driverClassName="oracle.jdbc.driver.OracleDriver" 
+	          type="javax.sql.DataSource" 
+	          url="jdbc:oracle:thin:@localhost:1521:ORCL" 
+	          username="scott"
+	          password="tiger" 
+	          maxTotal = "50" 
+	          loginTimeout="10" 
+	          maxActive="50" 
+	          maxIdle="20"
+	          maxWait="5000" 
+	          testOnBorrow="true" />
+			 */
+			
 			// Context.xml 파일의 정보 분석. DB정보는 Server > Context에 선언함
 			// InitialContext는 웹어플리케이션이 처음으로 배치될 때 설정되고 모든 설정된 엔트리와
 			// 자원은 JNDI namespace의 java:comp/env 부분에 놓임.
